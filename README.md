@@ -101,7 +101,7 @@ Thank you for your contributions!
 If you have any questions or suggestions, please feel free to reach out to me:
 
 - GitHub: [Your GitHub Profile](https://github.com/Guptaashish2003)
-- Email: your.email@example.com
+- Email: artcreation261@gmail.com
 
 I'm open to feedback, collaboration, and discussions related to data structures and C++ programming.
 
