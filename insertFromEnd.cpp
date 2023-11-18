@@ -35,8 +35,8 @@ class Node{
 int main()
 {
 
-    Node *head = NULL;
-    Node *tail = NULL;
+    Node* head = NULL;
+    Node* tail = NULL;
     insertFromEnd(head,tail, 12);
     insertFromEnd(head,tail, 132);
     insertFromEnd(head,tail, 1763762);
