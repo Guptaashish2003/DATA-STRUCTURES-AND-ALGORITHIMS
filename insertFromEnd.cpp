@@ -9,10 +9,16 @@ class Node{
         this->next = NULL;
     }
 };
-    void insertFromEnd(Node* &head, int data){
+    void insertFromEnd(Node* &head,Node* &tail, int data){
     Node* temp = new Node(data); // Create a new node with the given data.
-    head->next = temp; // Point the next pointer of the current last node to the new node.
-    head = temp; // Update the head pointer to the new node, making it the new last node.
+    if(tail==NULL){
+        tail=temp;
+        head=temp;
+    }
+    else{
+    tail->next = temp; // Point the next pointer of the current last node to the new node.
+    }
+    tail = temp; // Update the head pointer to the new node, making it the new last node.
 }
 
    void printNodes(Node* &head){
@@ -28,14 +34,14 @@ class Node{
 
 int main()
 {
-    Node *node = new Node(12);
 
-    Node *head = node;
-    Node *starting = node;
-    insertFromEnd(head, 132);
-    insertFromEnd(head, 1763762);
-    insertFromEnd(head, 13762);
-    insertFromEnd(head, 17632);
-    insertFromEnd(head, 13276);
-    printNodes(starting);
+    Node *head = NULL;
+    Node *tail = NULL;
+    insertFromEnd(head,tail, 12);
+    insertFromEnd(head,tail, 132);
+    insertFromEnd(head,tail, 1763762);
+    insertFromEnd(head,tail, 13762);
+    insertFromEnd(head,tail, 17632);
+    insertFromEnd(head,tail, 13276);
+    printNodes(head);
 }
