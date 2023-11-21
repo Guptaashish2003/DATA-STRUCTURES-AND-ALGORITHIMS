@@ -5,13 +5,65 @@ class Node
 {
 public:
     int data;
-    Node *next;
+    Node* next;
     Node(int data)
     {
         this->data = data;
         this->next = NULL;
     }
 };
+int findLen(Node* &head){
+    int len=0;
+    Node* temp = head;
+    while (temp!=NULL)
+    {
+        temp=temp->next;
+        len++;
+    }
+    // cout<<len<<endl;
+    
+}
+void insertAtHead (Node* &head,Node* &tail,int data){
+    Node* temp = new Node(data);
+    temp->next= head;
+    head = temp;
+}
+void insertAtPositionn(Node *&head, Node *&tail, int position, int data)
+{
+    //updated code
+    int len = findLen(head);
+    if (head == NULL || position == 0)
+    {
+        insertAtHead(head, tail, data);
+        return;
+    }
+
+    // if (position>len)
+    // {
+    //     cout<<"oops your inserting out of the range of your list"<<endl;
+    // }
+    
+    if (position == len)
+    {
+        Node* temp = new Node(data);
+        tail->next = temp;
+        tail = temp;
+        return;
+    }
+
+    int i = 1;
+    Node* prev = head;
+    while (i < position)
+    {
+        prev = prev->next;
+        i++;
+    }
+
+    Node* addNode = new Node(data);
+    addNode->next = prev->next;
+    prev->next = addNode;
+}
+
 void insertAtPosition(Node *&head, Node *tail, int position, int data)
 {
     Node* addNode = new Node(data);
@@ -67,9 +119,10 @@ int main()
     insertAtTail(head, tail, 124);
     insertAtTail(head, tail, 125);
     insertAtTail(head, tail, 126);
-    insertAtPosition(head, tail, 3, 23);
-    insertAtPosition(head, tail, 3, 2113);
-    insertAtPosition(head, tail, 0, 1123);
+    printNodes(head);
+    insertAtPositionn(head, tail, 3, 23);
+    insertAtPositionn(head, tail, 3, 2113);
+    // insertAtPositionn(head, tail, 8, 1123);
     printNodes(head);
 
     return 0;
