@@ -4,107 +4,115 @@ class Node
 {
 public:
     int data;
-    Node* next;
+    Node *next;
     Node(int data)
     {
         this->data = data;
         this->next = NULL;
     }
-    ~Node(){
-        cout<<"Deleting a Node with data = "<<this->data<<endl;
+    ~Node()
+    {
+        cout << "Deleting a Node with data = " << this->data << endl;
         delete next;
     }
 };
-void insertAtTail(Node* &head, Node* &tail, int data){
-    Node* temp = new Node(data);
-    if(head == NULL){
+void insertAtTail(Node *&head, Node *&tail, int data)
+{
+    Node *temp = new Node(data);
+    if (head == NULL)
+    {
         head = temp;
-        tail=temp;
+        tail = temp;
     }
-    else{
+    else
+    {
 
-    tail->next= temp;
+        tail->next = temp;
     }
     tail = temp;
 }
-int findLen(Node* &head){
-    int len=0;
-    Node* temp = head;
-    while (temp!=NULL)
+int findLen(Node *&head)
+{
+    int len = 0;
+    Node *temp = head;
+    while (temp != NULL)
     {
-        temp=temp->next;
+        temp = temp->next;
         len++;
     }
     return len;
-    
-    
 }
-void printNodes(Node* &head){
-    Node* temp = head;
-    while (temp!=NULL)
+void printNodes(Node *&head)
+{
+    Node *temp = head;
+    while (temp != NULL)
     {
-        cout<<temp->data<<" ";
+        cout << temp->data << " ";
         temp = temp->next;
     }
-    cout<<endl;
-    
+    cout << endl;
 }
-void deleteNode(Node* &head,Node* & tail ,int position){
-        Node* prev = head;
-    if(head == NULL){
-        cout<<" cannot delete empty list "<<endl;
+void deleteNode(Node *&head, Node *&tail, int position)
+{
+    Node *prev = head;
+    if (head == NULL)
+    {
+        cout << " cannot delete empty list " << endl;
         return;
     }
-    if(position==1){
-        Node* temp = head;
+    if (position == 1)
+    {
+        Node *temp = head;
         head = head->next;
-        temp->next= NULL;
+        temp->next = NULL;
         delete temp;
         return;
     }
     int len = findLen(head);
-    if(len == position){
+    if (len == position)
+    {
         int i = 1;
-        while (i<position-1){
+        while (i < position - 1)
+        {
             prev = prev->next;
             i++;
         }
-        prev->next= NULL;
-        Node* temp = tail;      
+        prev->next = NULL;
+        Node *temp = tail;
         delete temp;
     }
-    if(position<len){
-        int i= 1;
-        while(i<position-1){
-            prev=prev->next;
+    if (position < len)
+    {
+        int i = 1;
+        while (i < position - 1)
+        {
+            prev = prev->next;
             i++;
         }
-       Node* current = prev->next;
-       prev->next = current->next;
-        current->next= NULL;
+        Node *current = prev->next;
+        prev->next = current->next;
+        current->next = NULL;
         delete current;
-
     }
-    else{
-        cout<<"at position "<<position<<" node does not exist "<<endl;
+    else
+    {
+        cout << "at position " << position << " node does not exist " << endl;
     }
-
 }
 
 int main()
 {
 
-    Node* head = NULL;
-    Node* tail = NULL;
+    Node *head = NULL;
+    Node *tail = NULL;
 
     insertAtTail(head, tail, 12);
     insertAtTail(head, tail, 132);
     insertAtTail(head, tail, 124);
     insertAtTail(head, tail, 125);
     insertAtTail(head, tail, 126);
-    deleteNode(head,tail,3);
+    deleteNode(head, tail, 3);
     printNodes(head);
-
 
     return 0;
 }
